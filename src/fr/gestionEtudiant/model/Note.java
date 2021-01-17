@@ -1,103 +1,80 @@
 package fr.gestionEtudiant.model;
 
+import fr.gestionEtudiant.enumeration.MatiereEnum;
+import fr.gestionEtudiant.enumeration.Semestre;
+
 public class Note {
 	
+
+	private int mId; 
+	Personne mPersonne; 
+	MatiereEnum mMatiere; 
+	Semestre mSemestre;
 	
-	private int id;
-	private Personne personne;
-	private Matiere matiere;
-	private String semestre;
-	
-	
-	
-	
-	
-	public Note() {
+	public Note () {
+		
+	}
+	/**
+	 * @param mId
+	 * @param mPersonne
+	 * @param mMatiere
+	 * @param mSemestre
+	 */
+	public Note(int mId, Personne mPersonne, MatiereEnum mMatiere, Semestre mSemestre) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.mId = mId;
+		this.mPersonne = mPersonne;
+		this.mMatiere = mMatiere;
+		this.mSemestre = mSemestre;
 	}
-
-
-
-
-
-	public Note(int id, Personne personne, Matiere matiere, String semestre) {
-		super();
-		this.id = id;
-		this.personne = personne;
-		this.matiere = matiere;
-		this.semestre = semestre;
+	/**
+	 * @return the mId
+	 */
+	public int getmId() {
+		return mId;
 	}
-
-
-
-
-
-	public int getId() {
-		return id;
+	/**
+	 * @param mId the mId to set
+	 */
+	public void setmId(int mId) {
+		this.mId = mId;
 	}
-
-
-
-
-
-	public void setId(int id) {
-		this.id = id;
+	/**
+	 * @return the mPersonne
+	 */
+	public Personne getmPersonne() {
+		return mPersonne;
 	}
-
-
-
-
-
-	public Personne getPersonne() {
-		return personne;
+	/**
+	 * @param mPersonne the mPersonne to set
+	 */
+	public void setmPersonne(Personne mPersonne) {
+		this.mPersonne = mPersonne;
 	}
-
-
-
-
-
-	public void setPersonne(Personne personne) {
-		this.personne = personne;
+	/**
+	 * @return the mMatiere
+	 */
+	public MatiereEnum getmMatiere() {
+		return mMatiere;
 	}
-
-
-
-
-
-	public Matiere getMatiere() {
-		return matiere;
+	/**
+	 * @param mMatiere the mMatiere to set
+	 */
+	public void setmMatiere(MatiereEnum mMatiere) {
+		this.mMatiere = mMatiere;
 	}
-
-
-
-
-
-	public void setMatiere(Matiere matiere) {
-		this.matiere = matiere;
+	/**
+	 * @return the mSemestre
+	 */
+	public Semestre getmSemestre() {
+		return mSemestre;
 	}
+	/**
+	 * @param mSemestre the mSemestre to set
+	 */
+	public void setmSemestre(Semestre mSemestre) {
+		this.mSemestre = mSemestre;
+	} 
 
-
-
-
-
-	public String getSemestre() {
-		return semestre;
-	}
-
-
-
-
-
-	public void setSemestre(String semestre) {
-		this.semestre = semestre;
-	}
-	
-	
-	@Override
-	public String toString() {
-		return super.toString();
-		//return this.id + " " + this.personne.getNom;
-	}
 
 }
