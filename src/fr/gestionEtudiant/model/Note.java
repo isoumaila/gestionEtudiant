@@ -1,7 +1,7 @@
 package fr.gestionEtudiant.model;
 
 import fr.gestionEtudiant.enumeration.MatiereEnum;
-import fr.gestionEtudiant.enumeration.Semestre;
+import fr.gestionEtudiant.enumeration.SemestreEnum;
 
 public class Note {
 	
@@ -9,7 +9,7 @@ public class Note {
 	private int mId; 
 	Personne mPersonne; 
 	MatiereEnum mMatiere; 
-	Semestre mSemestre;
+	SemestreEnum mSemestre;
 	
 	public Note () {
 		
@@ -20,7 +20,7 @@ public class Note {
 	 * @param mMatiere
 	 * @param mSemestre
 	 */
-	public Note(int mId, Personne mPersonne, MatiereEnum mMatiere, Semestre mSemestre) {
+	public Note(int mId, Personne mPersonne, MatiereEnum mMatiere, SemestreEnum mSemestre) {
 		super();
 		this.mId = mId;
 		this.mPersonne = mPersonne;
@@ -66,13 +66,13 @@ public class Note {
 	/**
 	 * @return the mSemestre
 	 */
-	public Semestre getmSemestre() {
+	public SemestreEnum getmSemestre() {
 		return mSemestre;
 	}
 	/**
 	 * @param mSemestre the mSemestre to set
 	 */
-	public void setmSemestre(Semestre mSemestre) {
+	public void setmSemestre(SemestreEnum mSemestre) {
 		this.mSemestre = mSemestre;
 	} 
 
