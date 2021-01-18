@@ -1,12 +1,12 @@
 package fr.gestionEtudiant.model;
 
-import fr.gestionEtudiant.enumeration.Semestre;
+import fr.gestionEtudiant.enumeration.SemestreEnum;
 
 public class Specialite {
 	
 	private int mId; 
 	private String mNom, mDrescription; 
-	private Semestre mSemestre;
+	private SemestreEnum mSemestre;
 	
 	public Specialite() {
 		
@@ -20,7 +20,7 @@ public class Specialite {
 	 * @param mDrescription
 	 * @param mSemestre
 	 */
-	public Specialite(int mId, String mNom, String mDrescription, Semestre mSemestre) {
+	public Specialite(int mId, String mNom, String mDrescription, SemestreEnum mSemestre) {
 		super();
 		this.mId = mId;
 		this.mNom = mNom;
@@ -57,25 +57,25 @@ public class Specialite {
 	/**
 	 * @return the mDrescription
 	 */
-	public String getmDrescription() {
+	public String getmDescription() {
 		return mDrescription;
 	}
 	/**
 	 * @param mDrescription the mDrescription to set
 	 */
-	public void setmDrescription(String mDrescription) {
+	public void setmDescription(String mDrescription) {
 		this.mDrescription = mDrescription;
 	}
 	/**
 	 * @return the mSemestre
 	 */
-	public Semestre getmSemestre() {
+	public SemestreEnum getmSemestre() {
 		return mSemestre;
 	}
 	/**
 	 * @param mSemestre the mSemestre to set
 	 */
-	public void setmSemestre(Semestre mSemestre) {
+	public void setmSemestre(SemestreEnum mSemestre) {
 		this.mSemestre = mSemestre;
 	} 
 	
