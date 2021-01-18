@@ -18,7 +18,7 @@ public class EtudiantDaoSQL extends ConnectionDaoSQL implements IEtudiantDao {
 		List<Etudiant> etudiantList = new ArrayList<>();
 
 		try {
-			this.openConnection("gestionEtudiant", "root", "");
+			this.openConnection();
 
 			Statement monStatement = this.getConnecionSQL().createStatement();
 			ResultSet monResultat = monStatement.executeQuery("SELECT * FROM personne");
@@ -28,10 +28,14 @@ public class EtudiantDaoSQL extends ConnectionDaoSQL implements IEtudiantDao {
 				etudiant.setmId(monResultat.getInt("PER_ID"));
 				etudiant.setmNom(monResultat.getString("PER_NOM"));
 				etudiant.setmPrenom(monResultat.getString("PER_PRENOM"));
-				etudiant.setmDateNaissance(monResultat.getDate("PER_DATE_NAISSANCE").toLocalDate());
-				etudiant.setmAdresse(monResultat.getString("PER_ADRESSE"));
-				etudiant.setmAnneEnCours(monResultat.getDate("PER_ANNE_ENCOURS").toLocalDate());
+				if (monResultat.getDate("PER_DATE_NAISSANCE") != null) {
+					etudiant.setmDateNaissance(monResultat.getDate("PER_DATE_NAISSANCE").toLocalDate());
+				}
 
+				etudiant.setmAdresse(monResultat.getString("PER_ADRESSE"));
+				if (monResultat.getDate("PER_ANNE_ENCOURS") != null) {
+				etudiant.setmAnneEnCours(monResultat.getDate("PER_ANNE_ENCOURS").toLocalDate());
+				}
 
 				etudiantList.add(etudiant);
 			}
@@ -57,15 +61,11 @@ public class EtudiantDaoSQL extends ConnectionDaoSQL implements IEtudiantDao {
 	@Override
 	public Etudiant add(Etudiant entity) {
 		try {
-			this.openConnection("gestionEtudiant", "root", "");
-			
-			PreparedStatement monStatementInsert = this.getConnecionSQL()
-					.prepareStatement
-					(
-							"INSERT INTO personne(per_nom, per_prenom, per_mail, per_adresse, per_tetephone, PER_PASSWORD, per_date_Naissance, PER_TYPE,PER_SPETIALITE_ID,PER_NIVEAU_ID) VALUES (?, ?, ?, ?,?, ?, ?, ?,?,?)"
-							);
-			
-			
+			this.openConnection("gestionEtudiant", "root", "AA1993ee");
+
+			PreparedStatement monStatementInsert = this.getConnecionSQL().prepareStatement(
+					"INSERT INTO personne(per_nom, per_prenom, per_mail, per_adresse, per_telephone, PER_PASSWORD, per_date_Naissance,PER_SPETIALITE_ID,PER_NIVEAU_ID) VALUES (?, ?, ?,?, ?, ?, ?,?,?)");
+
 			monStatementInsert.setString(1, entity.getmNom());
 			monStatementInsert.setString(2, entity.getmPrenom());
 			monStatementInsert.setString(3, entity.getmEmail());
@@ -73,21 +73,21 @@ public class EtudiantDaoSQL extends ConnectionDaoSQL implements IEtudiantDao {
 			monStatementInsert.setString(5, entity.getmTelephone());
 			monStatementInsert.setString(6, entity.getmPassword());
 			monStatementInsert.setDate(7, Date.valueOf(entity.getmAnneEnCours()));
-			monStatementInsert.setString(8, String.valueOf(entity.type()));
-			monStatementInsert.setInt(9, entity.getmNiveau().getmId());
-			monStatementInsert.setInt(10, entity.getSpecialite().getmId());
-			
+			// monStatementInsert.setString(8, entity.type().name());
+			monStatementInsert.setInt(8, entity.getmNiveau().getmId());
+			monStatementInsert.setInt(9, entity.getSpecialite().getmId());
+
 			monStatementInsert.execute();
 		}
-		
+
 		catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
-		
+
 		finally {
 			this.closeConnection();
 		}
-		
+
 		return entity;
 	}
 
@@ -101,20 +101,21 @@ public class EtudiantDaoSQL extends ConnectionDaoSQL implements IEtudiantDao {
 	public boolean deleteById(int id) {
 		try {
 			this.openConnection("gestionEtudiant", "root", "");
-			
-			PreparedStatement monStatementInsert = this.getConnecionSQL().prepareStatement("DELETE FROM personne WHERE PRO_ID = ?");
-			
+
+			PreparedStatement monStatementInsert = this.getConnecionSQL()
+					.prepareStatement("DELETE FROM personne WHERE PRO_ID = ?");
+
 			monStatementInsert.setInt(1, id);
 			monStatementInsert.execute();
-			
+
 			return true;
 		}
-		
+
 		catch (SQLException sqle) {
 			sqle.printStackTrace();
 			return false;
 		}
-		
+
 		finally {
 			this.closeConnection();
 		}

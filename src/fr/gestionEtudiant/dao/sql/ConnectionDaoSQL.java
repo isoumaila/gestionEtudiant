@@ -28,6 +28,18 @@ public abstract class ConnectionDaoSQL {
 		}
 
 	}
+	
+	public void openConnection() {
+		try {
+			 this.connecionSQL = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestionEtudiant?serverTimezone=UTC",
+					"root", "AA1993ee");
+			System.out.println("Connection ok ....");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
 
 	protected Connection getConnecionSQL() {
 		return connecionSQL;

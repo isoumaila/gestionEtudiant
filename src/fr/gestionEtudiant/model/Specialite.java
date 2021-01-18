@@ -57,13 +57,13 @@ public class Specialite {
 	/**
 	 * @return the mDrescription
 	 */
-	public String getmDrescription() {
+	public String getmDescription() {
 		return mDrescription;
 	}
 	/**
 	 * @param mDrescription the mDrescription to set
 	 */
-	public void setmDrescription(String mDrescription) {
+	public void setmDescription(String mDrescription) {
 		this.mDrescription = mDrescription;
 	}
 	/**

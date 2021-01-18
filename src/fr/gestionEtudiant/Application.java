@@ -6,12 +6,15 @@ import java.time.format.DateTimeFormatter;
 
 import fr.gestionEtudiant.dao.IDao;
 import fr.gestionEtudiant.dao.sql.EtudiantDaoSQL;
+import fr.gestionEtudiant.dao.sql.NiveauDaoSQL;
+import fr.gestionEtudiant.dao.sql.SpecialiteDaoSQL;
 import fr.gestionEtudiant.enumeration.NiveauEnum;
 import fr.gestionEtudiant.enumeration.SemestreEnum;
 import fr.gestionEtudiant.enumeration.SpecialiteEnum;
 import fr.gestionEtudiant.model.Etudiant;
 import fr.gestionEtudiant.model.Niveau;
 import fr.gestionEtudiant.model.Specialite;
+import fr.gestionEtudiant.services.EtudiantServices;
 
 //Personne 
 //SpecialiteEnum
@@ -20,35 +23,67 @@ import fr.gestionEtudiant.model.Specialite;
 public class Application {
 
 	public static void main(String[] args) {
+		/*
+		IDao daoE = new EtudiantDaoSQL();
+		IDao daoN = new NiveauDaoSQL();
+		IDao daoSP = new SpecialiteDaoSQL();
 		
+		testCRUDENiveau(daoN, 5, NiveauEnum.M2, "Seulement pour les europeens");
+		testCRUDSpetialite(daoSP, 4, SpecialiteEnum.SciencesDeLingenieur, "Nouveau programme en 2015");
 		
-		IDao dao = new EtudiantDaoSQL();
+		Niveau niveau = (Niveau) daoN.findById(2);
+		System.out.println("Niveau trouvé: " + niveau+ " id = " +niveau.getmId());
+		Specialite sp = (Specialite) daoSP.findById(2);
+		System.out.println("Specialite trouvée: " + sp+ " id = " +sp.getmId());
+		testCRUDEtudiant(daoE, niveau, sp);*/
 		
-		Niveau niveau = new Niveau();
-		niveau.setmId(1);
-		niveau.setmNom(NiveauEnum.M2.name());
-		
-		Specialite sp = new Specialite(1, SpecialiteEnum.Chimie.name(), " Age superieure à 20", SemestreEnum.S1);
+		//EtudiantServices.menuAjouterUnEtudiant();
+		EtudiantServices.exitApplication();
+
+	}
+
+	/**
+	 * To be able to acomplish a compleate a CRUD for the Etudiant entity; a CRUD
+	 * must be first created for Niveau and Spetialite. 
+	 * 
+	 * @param dao
+	 */
+	public static void testCRUDEtudiant(IDao dao, Niveau niveau,Specialite sp) {
 		
 		Etudiant etudiant = new Etudiant();
-		
-		etudiant.setmId(1);
-		etudiant.setmNom("SOUMAILA");
-		etudiant.setmPrenom("Boubacar");
-		etudiant.setmAdresse("36 rue marguerite Lyon 2");
-		String str = "2021-01-15"; 
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		
-		LocalDate dateTime = LocalDate.parse(str, formatter);
 
+		etudiant.setmNom("Rodrigue");
+		etudiant.setmPrenom("Kader");
+		etudiant.setmAdresse("36 rue marguerite Lyon 2");
+		String str = "2020-01-15";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate dateTime = LocalDate.parse(str, formatter);
 		etudiant.setmAnneEnCours(dateTime);
 		etudiant.setmEmail("bou@uuuuuu");
 		etudiant.setmTelephone("05558888888");
 		etudiant.setmNiveau(niveau);
 		etudiant.setSpecialite(sp);
 		etudiant.setmPassword("jjjjjjjjjj888");
-		
 		dao.add(etudiant);
+	}
+	
+	public static void testCRUDENiveau(IDao dao, int id, NiveauEnum nom, String desc) {
+		
+		System.out.println("Debut testCRUDENiveau");
+		Niveau niveau = new Niveau();
+		niveau.setmId(id);
+		niveau.setmNom(nom.name());
+		niveau.setmDescription(desc);
+		
+		dao.add(niveau);
+		System.out.println("find testCRUDENiveau");
+	}
+	
+	public static void testCRUDSpetialite(IDao dao, int id, SpecialiteEnum nom, String description) {
+		System.out.println("Debut testCRUDSpetialite");
+		Specialite sp = new Specialite(1, nom.name(), description, SemestreEnum.S1);
+		dao.add(sp);
+		System.out.println("find testCRUDSpetialite");
 	}
 
 }
