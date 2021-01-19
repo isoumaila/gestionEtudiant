@@ -134,7 +134,7 @@ public class MatiereDaoSQL extends ConnectionDaoSQL implements IMatiereDao {
 					.prepareStatement( "UPDATE matieres SET (MAT_NOM, MAT_DESC, WHERE MAT_ID)  VALUES (?,?,?)");
 			monStatementInsert.setString(1, newMatiere.getmNom());
 			monStatementInsert.setString(2, newMatiere.getmDescription());
-			monStatementInsert.setInt(3, newMatiere.getId());
+			monStatementInsert.setInt(3, newMatiere.getmId());
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -120,7 +120,7 @@ public class DocumentDaoSQL extends ConnectionDaoSQL implements IDocumentDao  {
 			monStatementInsert.setDate(2,Date.valueOf(newDocument.getmDate()));
 			monStatementInsert.setString(3,String.valueOf(newDocument.getmType()));
 			monStatementInsert.setInt(4, newDocument.getmPersonne().getmId());
-			monStatementInsert.setInt(5, newDocument.getmMatiere().getId());
+			monStatementInsert.setInt(5, newDocument.getmMatiere().getmId());
 			
 			return true;
 		} catch (SQLException e) {
@@ -145,7 +145,7 @@ public class DocumentDaoSQL extends ConnectionDaoSQL implements IDocumentDao  {
 			monStatementInsert.setDate(2,Date.valueOf(entity.getmDate()));
 			monStatementInsert.setString(3,String.valueOf(entity.getmType()));
 			monStatementInsert.setInt(4, entity.getmPersonne().getmId());
-			monStatementInsert.setInt(5, entity.getmMatiere().getId());
+			monStatementInsert.setInt(5, entity.getmMatiere().getmId());
 					
 			monStatementInsert.execute();				
 		}catch (SQLException sqle) {
