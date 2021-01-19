@@ -1,5 +1,5 @@
 package fr.gestionEtudiant.enumeration;
 
-public enum MatiereEnum { Maths, Physique, Chimie, Anglais, Français, Espagnol, Chinois, Bandjounais; 
+public enum MatiereEnum { Maths, Physique, Chimie, Anglais, Francais, Espagnol, Chinois, Bandjounais; 
 
 }

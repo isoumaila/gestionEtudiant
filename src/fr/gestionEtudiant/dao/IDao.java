@@ -2,8 +2,6 @@ package fr.gestionEtudiant.dao;
 
 import java.util.List;
 
-import fr.gestionEtudiant.model.Matiere;
-
 public interface IDao<T> {
 	
 	public List<T> findAll();

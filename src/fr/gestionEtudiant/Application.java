@@ -1,13 +1,9 @@
 package fr.gestionEtudiant;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import fr.gestionEtudiant.dao.IDao;
-import fr.gestionEtudiant.dao.sql.EtudiantDaoSQL;
-import fr.gestionEtudiant.dao.sql.NiveauDaoSQL;
-import fr.gestionEtudiant.dao.sql.SpecialiteDaoSQL;
 import fr.gestionEtudiant.enumeration.NiveauEnum;
 import fr.gestionEtudiant.enumeration.SemestreEnum;
 import fr.gestionEtudiant.enumeration.SpecialiteEnum;
@@ -23,6 +19,8 @@ import fr.gestionEtudiant.services.EtudiantServices;
 public class Application {
 
 	public static void main(String[] args) {
+		
+		BDD bdd = new BDD("url", "root", "Favela.1994","gestionEtudiant","localhost",3306); 
 		/*
 		IDao daoE = new EtudiantDaoSQL();
 		IDao daoN = new NiveauDaoSQL();
