@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.gestionEtudiant.dao.ISpetialiteDao;
+import fr.gestionEtudiant.model.Matiere;
 import fr.gestionEtudiant.model.Niveau;
 import fr.gestionEtudiant.model.Specialite;
 
@@ -128,6 +129,14 @@ public class SpecialiteDaoSQL extends ConnectionDaoSQL implements ISpetialiteDao
 		finally {
 			this.closeConnection();
 		}
+	}
+
+	
+
+	@Override
+	public boolean updatebyId(int id, Specialite entity) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

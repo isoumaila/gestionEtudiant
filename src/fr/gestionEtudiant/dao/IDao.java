@@ -2,6 +2,8 @@ package fr.gestionEtudiant.dao;
 
 import java.util.List;
 
+import fr.gestionEtudiant.model.Matiere;
+
 public interface IDao<T> {
 	
 	public List<T> findAll();
@@ -9,5 +11,6 @@ public interface IDao<T> {
 	public T add(T entity);
 	public T save(T entity);
 	public boolean deleteById(int id);
+	public boolean updatebyId(int id, T entity);
 
 }

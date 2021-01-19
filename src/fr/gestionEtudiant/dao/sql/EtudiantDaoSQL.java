@@ -10,6 +10,7 @@ import java.util.List;
 
 import fr.gestionEtudiant.dao.IEtudiantDao;
 import fr.gestionEtudiant.model.Etudiant;
+import fr.gestionEtudiant.model.Matiere;
 
 public class EtudiantDaoSQL extends ConnectionDaoSQL implements IEtudiantDao {
 
@@ -120,5 +121,12 @@ public class EtudiantDaoSQL extends ConnectionDaoSQL implements IEtudiantDao {
 			this.closeConnection();
 		}
 	}
+
+	@Override
+	public boolean updatebyId(int id, Etudiant entity) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 }

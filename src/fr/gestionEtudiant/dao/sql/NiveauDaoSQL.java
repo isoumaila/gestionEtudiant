@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.gestionEtudiant.dao.INiveauDao;
+import fr.gestionEtudiant.model.Matiere;
 import fr.gestionEtudiant.model.Niveau;
 
 public class NiveauDaoSQL extends ConnectionDaoSQL implements INiveauDao {
@@ -127,6 +128,14 @@ public class NiveauDaoSQL extends ConnectionDaoSQL implements INiveauDao {
 		finally {
 			this.closeConnection();
 		}
+	}
+
+	
+
+	@Override
+	public boolean updatebyId(int id, Niveau entity) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

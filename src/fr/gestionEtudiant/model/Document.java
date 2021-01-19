@@ -1,5 +1,6 @@
 package fr.gestionEtudiant.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import fr.gestionEtudiant.enumeration.DocumentType;
@@ -7,12 +8,12 @@ import fr.gestionEtudiant.enumeration.DocumentType;
 public class Document {
 	private int mId; 
 	private String mNom;
-	private LocalDateTime mDate; 
+	private LocalDate mDate; 
 	private DocumentType mType; 
 	private Personne mPersonne; 
 	private Matiere mMatiere; 
 	
-	Document(){
+	public Document(){
 		
 	}
 
@@ -24,7 +25,7 @@ public class Document {
 	 * @param mPersonne
 	 * @param mMatiere
 	 */
-	public Document(int mId, String mNom, LocalDateTime mDate, DocumentType mType, Personne mPersonne, Matiere mMatiere) {
+	public Document(int mId, String mNom, LocalDate  mDate, DocumentType mType, Personne mPersonne, Matiere mMatiere) {
 		super();
 		this.mId = mId;
 		this.mNom = mNom;
@@ -65,15 +66,15 @@ public class Document {
 	/**
 	 * @return the mDate
 	 */
-	public LocalDateTime getmDate() {
+	public LocalDate  getmDate() {
 		return mDate;
 	}
 
 	/**
-	 * @param mDate the mDate to set
+	 * @param localDate the mDate to set
 	 */
-	public void setmDate(LocalDateTime mDate) {
-		this.mDate = mDate;
+	public void setmDate(LocalDate localDate) {
+		this.mDate = localDate;
 	}
 
 	/**
